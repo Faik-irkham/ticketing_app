@@ -1,44 +1,5 @@
-// Widget bantuan untuk menampilkan informasi penerbangan (Class, Terminal, dll)
 import 'package:flutter/material.dart';
-
-class _FlightInfoColumn extends StatelessWidget {
-  final String title;
-  final String value;
-  final bool isLight;
-
-  const _FlightInfoColumn({
-    required this.title,
-    required this.value,
-    this.isLight = false,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          title,
-          style: TextStyle(
-            color: isLight ? Colors.grey.shade600 : Colors.black,
-            fontSize: 12,
-          ),
-        ),
-        const SizedBox(height: 4),
-        Text(
-          value,
-          style: TextStyle(
-            color: isLight ? Colors.black : Colors.white,
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-// --- LAYAR BARU: BOARDING PASS (DESAIN DIPERBARUI) ---
+import 'package:ticketing_app/flight_info_column.dart';
 
 class BoardingPassScreen extends StatelessWidget {
   const BoardingPassScreen({super.key});
@@ -268,18 +229,14 @@ class BoardingPassScreen extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _FlightInfoColumn(
+                FlightInfoColumn(
                   title: 'Class',
                   value: 'Economy',
                   isLight: true,
                 ),
-                _FlightInfoColumn(
-                  title: 'Terminal',
-                  value: 'F2',
-                  isLight: true,
-                ),
-                _FlightInfoColumn(title: 'Gate', value: '32', isLight: true),
-                _FlightInfoColumn(title: 'Seat', value: '8A', isLight: true),
+                FlightInfoColumn(title: 'Terminal', value: 'F2', isLight: true),
+                FlightInfoColumn(title: 'Gate', value: '32', isLight: true),
+                FlightInfoColumn(title: 'Seat', value: '8A', isLight: true),
               ],
             ),
           ),
